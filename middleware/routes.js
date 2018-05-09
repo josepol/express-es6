@@ -1,7 +1,12 @@
 'use strict';
+
+const winston = require('winston');
  
-exports.register = (app) => {
+const routes = (app) => {
     app.get('/api', function(req, res, next) {
+        winston.info('api');
         res.send('api');
     });
 };
+
+module.exports  = routes;

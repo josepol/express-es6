@@ -4,7 +4,7 @@ const winston = require('winston');
 const nconf = require('nconf');
 const path = require('path');
 
-const registerr = () => {
+const config = () => {
   let configFilePath = path.join(__dirname, '../config.json');
  
   nconf.overrides({});
@@ -23,4 +23,4 @@ const registerr = () => {
   winston.info('app - config: nconf loaded');
 };
 
-module.exports = registerr;
+module.exports = config;

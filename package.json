@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "start-babel": "babel-node ./bin/www --presets es2015"
+    "start-babel": "babel-node ./bin/www --presets es2015",
+    "start-nodemon-babel":"nodemon --exec babel-node ./bin/www --presets es2015"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

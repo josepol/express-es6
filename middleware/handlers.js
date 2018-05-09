@@ -1,29 +1,16 @@
 'use strict';
  
 const winston = require('winston');
+const createError = require('http-errors');
  
-exports.register = (app) => {
-  registerDefaultHandler(app);
-  winston.info('app - handlers: default handler loaded');
- 
+const errorHandler = (app) => {
   registerNotFoundHandler(app);
-  winston.info('app - handlers: not found handler loaded');
- 
   registerErrorHandler(app);
-  winston.info('app - handlers: error handler loaded');
 };
- 
-function registerDefaultHandler(app) {
-  app.get('/', (req, res) => {
-    res.send('');
-  });
-}
  
 function registerNotFoundHandler(app) {
   app.use((req, res, next) => {
-    let err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+    next(createError(404, 'custom error response'));
   });
 }
 
@@ -40,3 +27,5 @@ function registerErrorHandler(app) {
       .send(err.message);
   });
 }
+
+module.exports = errorHandler;
