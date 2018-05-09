@@ -1,15 +1,18 @@
 'use strict'
 
 const winston = require('winston');
+const UserDao = require('./user.dao');
 
-const userService = () => {
+class UserService {
 
-    return {
-        list: () => {
-            winston.info('Service :: users :: started');
-            return ['test 1', 'test 2', 'test 3']
-        }
+    constructor() {
+        this.userDao = new UserDao();
+    }
+
+    users(req, res, next) {
+        winston.info('Service :: users :: started');
+        res.send(this.userDao.list())
     }
 }
 
-module.exports = userService;
+module.exports = UserService;
