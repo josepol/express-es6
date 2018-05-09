@@ -10,7 +10,6 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const configs = require('./middleware/configs');
-const utils = require('./middleware/utils');
 const routes = require('./middleware/routes');
 const handlers = require('./middleware/handlers');
 
@@ -18,8 +17,7 @@ winston.info('APP started');
 
 var app = express();
 
-configs.register();
-utils.register(app);
+configs();
 routes.register(app);
 handlers.register(app);
 winston.level = nconf.get('logging:level');

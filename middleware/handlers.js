@@ -1,6 +1,6 @@
 'use strict';
  
-const winston = require('winston'); // https://www.npmjs.com/package/winston
+const winston = require('winston');
  
 exports.register = (app) => {
   registerDefaultHandler(app);
@@ -26,12 +26,7 @@ function registerNotFoundHandler(app) {
     next(err);
   });
 }
- 
-/**
- * development error handler, will print stacktrace
- * production error handler, no stack traces leaked to user
- * @param app
- */
+
 function registerErrorHandler(app) {
   if (app.get('env') === 'development') {
     app.use((err, req, res, next) => {
