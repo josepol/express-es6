@@ -4,23 +4,15 @@ const winston = require('winston');
 const nconf = require('nconf');
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const config = require('./middleware/configs');
-const routes = require('./middleware/routes');
-const errorHandler = require('./middleware/handlers');
+const config = require('./config/app.config');
+const routingConfig = require('./config/app-routing.config');
+const userRouting = require('./services/user/user.routing');
+const expressConfig = require('./config/app-express-config');
 
-winston.info('API started');
+const app = express();
 
-var app = express();
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
+expressConfig(app);
 config();
-routes(app);
-errorHandler(app);
+routingConfig(app);
 
 module.exports = app;

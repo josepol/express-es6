@@ -20,7 +20,6 @@ const config = () => {
   winston.info('app - config: logging: ', nconf.get('logging'));
   winston.info('app - config: config file loaded from: ', configFilePath);
   winston.info('app - config: application:', nconf.get('application'));
-  winston.info('app - config: nconf loaded');
 };
 
 module.exports = config;
