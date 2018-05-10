@@ -20,7 +20,7 @@ const registerNotFoundHandler = (app) => app.use((req, res, next) => next(create
 
 const registerErrorHandler = (app) => {
   if (app.get('env') === 'development') {
-    app.use((err, req, res, next) => res.status(err.status || 500).send({err}));
+    app.use((err, req, res, next) => res.status(err.status || 500).send(err));
   }
  
   app.use((err, req, res, next) => res.status(err.status || 500).send(err.message));

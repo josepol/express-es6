@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "start-babel": "babel-node ./bin/www --presets es2015",
-    "start-nodemon-babel":"nodemon --exec babel-node ./bin/www --presets es2015"
+    "start-nodemon-babel": "nodemon --exec babel-node ./bin/www --presets es2015"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -15,8 +15,14 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "longjohn": "^0.2.12",
+    "mongoose": "^5.0.18",
     "morgan": "~1.9.0",
     "nconf": "^0.10.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
     "request": "^2.85.0",
     "request-debug": "^0.2.0",
