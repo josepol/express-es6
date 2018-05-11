@@ -6,6 +6,6 @@ const router = express.Router();
 
 const userService = new UserService();
 
-router.get('/users', (req, res, next) => userService.users(req, res, next));
+router.get('/list', (req, res, next) => userService.users(req, res, next));
 
 module.exports = router;

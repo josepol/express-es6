@@ -17,9 +17,9 @@ const config = () => {
     }
   });
 
-  winston.info('app - config: logging: ', nconf.get('logging'));
-  winston.info('app - config: config file loaded from: ', configFilePath);
-  winston.info('app - config: application:', nconf.get('application'));
+  winston.info('app - nconf: log:', nconf.get('logging'));
+  winston.info('app - nconf: config file path:', configFilePath);
+  winston.info('app - nconf: config file application content:', nconf.get('application'));
 };
 
 module.exports = config;

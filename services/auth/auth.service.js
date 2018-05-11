@@ -1,6 +1,7 @@
 'use strict'
 
 const winston = require('winston');
+const passport = require('passport');
 const AuthDao = require('./auth.dao');
 
 class AuthService {
@@ -10,7 +11,8 @@ class AuthService {
     }
 
     login(req, res, next) {
-        res.send(this.authDao.login());
+        winston.info('login');
+        res.json(res);
     }
 
     register(req, res, next) {
@@ -18,6 +20,7 @@ class AuthService {
     }
 
     refresh(req, res, next) {
+        winston.info(req.user);
         res.send(this.authDao.login());
     }
 

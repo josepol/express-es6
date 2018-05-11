@@ -2,12 +2,12 @@
 
 const winston = require('winston');
 
-class UserDao {
+const userDao = function() {
 
-    list() {
+    this.list = () => {
         winston.info('Dao :: users :: started');
-        return ['test dao 1', 'test dao 2']
+        return ['test dao 1', 'test dao 2'];
     }
 }
 
-module.exports = UserDao;
+module.exports = userDao;

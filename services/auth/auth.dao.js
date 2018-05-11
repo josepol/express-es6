@@ -1,9 +1,11 @@
 'use strict'
 
+const winston = require('winston');
+
 class AuthDao {
 
     login() {
-        return 'login';
+        return { username: 'username', password: 'password', token: 'token' };
     }
 
 }

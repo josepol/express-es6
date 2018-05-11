@@ -3,16 +3,14 @@
 const winston = require('winston');
 const UserDao = require('./user.dao');
 
-class UserService {
+const userService = function() {
 
-    constructor() {
-        this.userDao = new UserDao();
-    }
+    this.userDao = new UserDao();
 
-    users(req, res, next) {
+    this.users = (req, res, next) => {
         winston.info('Service :: users :: started');
-        res.send(this.userDao.list())
+        res.send(this.userDao.list());
     }
 }
 
-module.exports = UserService;
+module.exports = userService;

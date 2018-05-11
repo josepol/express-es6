@@ -12,18 +12,18 @@ const routingConfig = (app) => {
 };
 
 const registerAPIEndpoints = (app) => {
-  app.use(userRouting);
-  app.use(authRouting);
+  app.use('/users', userRouting);
+  app.use('/auth', authRouting);
 }
  
 const registerNotFoundHandler = (app) => app.use((req, res, next) => next(createError(404, 'custom error response')));
 
 const registerErrorHandler = (app) => {
   if (app.get('env') === 'development') {
-    app.use((err, req, res, next) => res.status(err.status || 500).send(err));
+    app.use((error, req, res, next) => res.status(error.status || 500).send({error}));
   }
  
-  app.use((err, req, res, next) => res.status(err.status || 500).send(err.message));
+  app.use((error, req, res, next) => res.status(error.status || 500).send(error.message));
 }
 
 module.exports = routingConfig;
