@@ -2,12 +2,20 @@
 
 const winston = require('winston');
 
-class AuthDao {
+const authDao = function() {
 
-    login() {
-        return { username: 'username', password: 'password', token: 'token' };
+    this.login = (username) => {
+        return new Promise((resolve, reject) => {
+            resolve({ username: 'jose', password: '$2b$08$zg5hk4FhRKLLaOjqrDHqvuSZcLjq8vuorZdgTMK0RRBmWLy0mxHAe' });
+        });
+    }
+
+    this.register = (user) => {
+        return new Promise((resolve, reject) => {
+            resolve();
+        });
     }
 
 }
 
-module.exports = AuthDao;
+module.exports = authDao;
