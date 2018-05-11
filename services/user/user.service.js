@@ -7,7 +7,7 @@ const userService = function() {
 
     this.userDao = new UserDao();
 
-    this.users = (req, res, next) => {
+    this.list = (req, res, next) => {
         winston.info('Service :: users :: started');
         res.send(this.userDao.list());
     }
