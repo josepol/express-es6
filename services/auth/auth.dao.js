@@ -12,7 +12,7 @@ const authDao = function() {
 
     this.register = (user) => {
         return new Promise((resolve, reject) => {
-            resolve();
+            resolve({valid: true});
         });
     }
 

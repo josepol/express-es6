@@ -14,7 +14,9 @@ const authService = function() {
     this.login = (req, res, next) => {
         winston.info('Service :: auth :: login');
         authDao.login(req.body.username).then(user => {
-            if (!bcrypt.compareSync(req.body.password, user.password)) res.status(401).send();
+            if (!bcrypt.compareSync(req.body.password, user.password)) {
+                res.status(401).send();
+            }
             const token = jwt.sign({id: user.username}, 'SECRET_KEY', {
                 expiresIn: 1000000
             });
@@ -25,13 +27,14 @@ const authService = function() {
 
     this.register = (req, res, next) => {
         winston.info('Service :: auth :: register');
-        winston.info(`Username: ${req.body.username} Password: ${req.body.password}`);
         const user = {
             username: req.body.username,
             password: bcrypt.hashSync(req.body.password, 8)
         };
-        winston.info('user -->', user);
-        authDao.register(user);
+        authDao.register(user).then(response => {
+            res.send({status: response.valid});
+        })
+        .catch(error => res.status(400).send());
     }
 
     this.refresh = (req, res, next) => {
