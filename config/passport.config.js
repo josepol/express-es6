@@ -3,6 +3,7 @@
 const winston = require('winston');
 const passport = require('passport');
 const BearerStrategy = require('passport-http-bearer').Strategy;
+
 const AuthDao = require('../services/auth/auth.dao');
 
 const authDao = new AuthDao();

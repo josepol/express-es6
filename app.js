@@ -4,15 +4,18 @@ const winston = require('winston');
 const nconf = require('nconf');
 const createError = require('http-errors');
 const express = require('express');
+const mongoose = require('mongoose');
 
-const config = require('./config/app.config');
+const nconfConfig = require('./config/nconf.config');
 const routingConfig = require('./config/routing.config');
 const expressConfig = require('./config/express.config');
 const passportConfig = require('./config/passport.config');
 
+// mongoose.connect('mongodb://localhost/test');
+
 const app = express();
 
-config();
+nconfConfig();
 expressConfig(app);
 routingConfig(app);
 passportConfig();

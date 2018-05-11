@@ -2,6 +2,7 @@
  
 const winston = require('winston');
 const createError = require('http-errors');
+
 const userRouting = require('../services/user/user.routing');
 const authRouting = require('../services/auth/auth.routing');
  
@@ -16,14 +17,7 @@ const registerAPIEndpoints = (app) => {
   app.use('/auth', authRouting);
 }
  
-const registerNotFoundHandler = (app) => app.use((req, res, next) => next(createError(404, 'custom error response')));
-
-const registerErrorHandler = (app) => {
-  if (app.get('env') === 'development') {
-    app.use((error, req, res, next) => res.status(error.status || 500).send({error}));
-  }
- 
-  app.use((error, req, res, next) => res.status(error.status || 500).send(error.message));
-}
+const registerNotFoundHandler = (app) => app.use((req, res, next) => next(createError(404, 'CUSTOM NOT FOUND')));
+const registerErrorHandler = (app) => app.use((error, req, res, next) => res.status(error.status || 500).send({error}));
 
 module.exports = routingConfig;
