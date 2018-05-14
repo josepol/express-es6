@@ -42,7 +42,11 @@ const userService = function() {
     this.update = (req, res, next) => {
         winston.info('Service :: users :: update', req.params);
         const id = req.params.id;
-        this.userDao.update(id).then(() => res.send('OKK'))
+        const user = {
+            ...req.body,
+            created_at: moment(new Date(req.body.created_at))
+        }
+        this.userDao.update(id, user).then(() => res.send('OKK'))
         .catch(error => res.send(error));
     }
 }

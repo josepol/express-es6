@@ -26,16 +26,14 @@ const userDao = function() {
     this.destroy = (id) => {
         winston.info('Dao :: users :: listOne');
         return sequelize.User.destroy({
-            where: {id: '6b4c2aa0-5764-11e8-8db2-cfb53764c2d8'}
+            where: {id}
         });
     }
 
-    this.update = (id) => {
+    this.update = (id, user) => {
         winston.info('Dao :: users :: update');
-        return sequelize.User.update({
-            user_name: 'asdasdasd'
-        }, {
-            where: {id: '6b4c2aa0-5764-11e8-8db2-cfb53764c2d8'}
+        return sequelize.User.update(user, {
+            where: {id}
         });
     }
 }
