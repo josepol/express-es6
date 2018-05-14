@@ -9,9 +9,9 @@ const router = express.Router();
 const userService = new UserService();
 
 router.get('/listAll', authMiddleware(), userService.listAll);
-router.get('/listOne', authMiddleware(), userService.listOne);
-router.get('/create', authMiddleware(), userService.create);
-router.get('/destroy', authMiddleware(), userService.destroy);
-router.get('/update', authMiddleware(), userService.update);
+router.get('/listOne/:id', authMiddleware(), userService.listOne);
+router.post('/create', authMiddleware(), userService.create);
+router.get('/destroy/:id', authMiddleware(), userService.destroy);
+router.post('/update/:id', authMiddleware(), userService.update);
 
 module.exports = router;

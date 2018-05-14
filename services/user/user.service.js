@@ -1,6 +1,8 @@
 'use strict'
 
 const winston = require('winston');
+const moment = require('moment');
+
 const UserDao = require('./user.dao');
 
 const userService = function() {
@@ -14,26 +16,33 @@ const userService = function() {
     }
 
     this.listOne = (req, res, next) => {
-        winston.info('Service :: users :: listOne');
-        this.userDao.listOne().then(user => res.send(user))
+        winston.info('Service :: users :: listOne', req.params);
+        const id = req.params.id;
+        this.userDao.listOne(id).then(user => res.send(user))
         .catch(error => res.send(error));
     }
 
     this.create = (req, res, next) => {
         winston.info('Service :: users :: create');
-        this.userDao.create().then(() => res.send('OKK'))
+        const user = {
+            ...req.body,
+            created_at: moment(new Date(req.body.created_at))
+        }
+        this.userDao.create(user).then(() => res.send('OKK'))
         .catch(error => res.send(error));
     }
 
     this.destroy = (req, res, next) => {
-        winston.info('Service :: users :: destroy');
-        this.userDao.destroy().then(() => res.send('OKK'))
+        winston.info('Service :: users :: destroy', req.params);
+        const id = req.params.id;
+        this.userDao.destroy(id).then(() => res.send('OKK'))
         .catch(error => res.send(error));
     }
 
     this.update = (req, res, next) => {
-        winston.info('Service :: users :: update');
-        this.userDao.update().then(() => res.send('OKK'))
+        winston.info('Service :: users :: update', req.params);
+        const id = req.params.id;
+        this.userDao.update(id).then(() => res.send('OKK'))
         .catch(error => res.send(error));
     }
 }
