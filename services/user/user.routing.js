@@ -8,7 +8,10 @@ const authMiddleware = require('../passport.middleware');
 const router = express.Router();
 const userService = new UserService();
 
-router.get('/list', authMiddleware(), userService.list);
-router.get('/listmysql', authMiddleware(), userService.listmysql)
+router.get('/listAll', authMiddleware(), userService.listAll);
+router.get('/listOne', authMiddleware(), userService.listOne);
+router.get('/create', authMiddleware(), userService.create);
+router.get('/destroy', authMiddleware(), userService.destroy);
+router.get('/update', authMiddleware(), userService.update);
 
 module.exports = router;
