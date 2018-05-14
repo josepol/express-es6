@@ -16,9 +16,10 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.2.1",
-    "longjohn": "^0.2.12",
+    "lodash": "^4.17.10",
     "mongoose": "^5.0.18",
     "morgan": "~1.9.0",
+    "mysql2": "^1.5.3",
     "nconf": "^0.10.0",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
@@ -30,6 +31,8 @@
     "request": "^2.85.0",
     "request-debug": "^0.2.0",
     "request-promise": "^4.2.2",
+    "sequelize": "^4.37.7",
+    "sequelize-cli": "^4.0.0",
     "winston": "^2.4.0"
   },
   "devDependencies": {
@@ -48,5 +51,8 @@
     "sinon": "^5.0.7",
     "sinon-as-promised": "^4.0.3",
     "supertest": "^3.0.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base"
   }
 }

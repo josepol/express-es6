@@ -5,6 +5,7 @@ const nconf = require('nconf');
 const createError = require('http-errors');
 const express = require('express');
 const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
 
 const nconfConfig = require('./config/nconf.config');
 const routingConfig = require('./config/routing.config');

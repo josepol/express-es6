@@ -9,5 +9,6 @@ const router = express.Router();
 const userService = new UserService();
 
 router.get('/list', authMiddleware(), userService.list);
+router.get('/listmysql', authMiddleware(), userService.listmysql)
 
 module.exports = router;
