@@ -49,6 +49,18 @@ const userService = function() {
         this.userDao.update(id, user).then(() => res.send('OKK'))
         .catch(error => res.send(error));
     }
+
+    this.transaction = (req, res, next) => {
+        winston.info('Service :: users :: transaction');
+        const id1 = req.params.id1;
+        const id2 = req.params.id2;
+        const user = {
+            ...req.body,
+            created_at: moment(new Date(req.body.created_at))
+        }
+        this.userDao.transaction(id1, id2, user).then(() => res.send('OKK'))
+        .catch(error => res.send(error));
+    }
 }
 
 module.exports = userService;

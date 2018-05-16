@@ -13,5 +13,6 @@ router.get('/listOne/:id', authMiddleware(), userService.listOne);
 router.post('/create', authMiddleware(), userService.create);
 router.get('/destroy/:id', authMiddleware(), userService.destroy);
 router.post('/update/:id', authMiddleware(), userService.update);
+router.post('/transaction/:id1/:id2', authMiddleware(), userService.update);
 
 module.exports = router;

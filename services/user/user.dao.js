@@ -36,6 +36,21 @@ const userDao = function() {
             where: {id}
         });
     }
+
+    this.transaction = (id1, id2, user) => {
+        winston.info('Dao :: users :: update');
+        return sequelize.transaction(t => {
+            return sequelize.User.update(user, {
+                where: {id: id1}
+            }).then(() => {
+                return sequelize.User.destroy({
+                    where: {id: id2}
+                });
+            });
+        })
+        .then(() => winston.info('success'))
+        .catch(() => winston.info('error'))
+    }
 }
 
 module.exports = userDao;
