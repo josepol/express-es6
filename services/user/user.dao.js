@@ -46,7 +46,9 @@ const userDao = function() {
                 return sequelize.User.destroy({
                     where: {id: id2}
                 });
-            });
+            }).then(() => {
+                // throw new Error('test');
+            })
         })
         .then(() => winston.info('success'))
         .catch(() => winston.info('error'))
